@@ -10,7 +10,6 @@ import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
-import { PostModule } from './post/post.module';
 
 @NgModule({
   declarations: [
@@ -24,8 +23,7 @@ import { PostModule } from './post/post.module';
     AngularFireAuthModule,
     AngularFireStorageModule,
     CoreModule,
-    SharedModule,
-    PostModule
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
