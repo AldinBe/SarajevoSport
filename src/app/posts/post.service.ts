@@ -11,7 +11,6 @@ export class PostService {
   postsCollection: AngularFirestoreCollection<Post>
   postDoc: AngularFirestoreDocument<Post>
 
-
   constructor(private afs: AngularFirestore) {
     this.postsCollection = this.afs.collection('posts', ref =>
       ref.orderBy('published', 'desc')
@@ -26,5 +25,10 @@ export class PostService {
       })
     })
   }
+  getPostData(id: string) {
+    this.postDoc = this.afs.doc<Post>(`posts/${id}`)
+    return this.postDoc.valueChanges()
+  }
+
 
 }
