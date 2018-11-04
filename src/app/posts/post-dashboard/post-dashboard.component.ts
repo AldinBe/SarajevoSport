@@ -12,6 +12,10 @@ export class PostDashboardComponent implements OnInit {
   title:string
   image:string = null
   content:string
+
+  buttonText : string = "Create Post"
+
+
   constructor(private auth: AuthService, private postService: PostService) { }
 
   ngOnInit() {
@@ -27,6 +31,10 @@ export class PostDashboardComponent implements OnInit {
       title: this.title
     };
     this.postService.create(data)
+    this.title=''
+    this.content=''
+    this.buttonText='Post Created!'
+    setTimeout(()=> this.buttonText="Create Post", 3000)
   }
 
 }
