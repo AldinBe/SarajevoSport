@@ -16,6 +16,7 @@ export class PostService {
       ref.orderBy('published', 'desc')
     )
   }
+
   getPosts() {
     return this.postsCollection.snapshotChanges().map(actions => {
       return actions.map(a => {
@@ -25,25 +26,25 @@ export class PostService {
       })
     })
   }
+
   getPostData(id: string) {
     this.postDoc = this.afs.doc<Post>(`posts/${id}`)
     return this.postDoc.valueChanges()
   }
+
+  getPost(id: string) {
+    return this.afs.doc<Post>(`posts/${id}`)
+  }
+
   create(data: Post) {
     this.postsCollection.add(data)
+  }
 
-  }
-  getPost(id: string) {
-    return this.afs.doc<Post>('post/${id}')
-  }
   delete(id: string) {
     return this.getPost(id).delete()
-
   }
+
   update(id: string, formData) {
     return this.getPost(id).update(formData)
-
   }
-
-
 }
